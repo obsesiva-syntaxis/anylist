@@ -24,7 +24,7 @@ export class AuthService {
         
         return {
             token,
-            user
+            user 
         }
     }
     
@@ -39,18 +39,18 @@ export class AuthService {
         }
     }
 
-    async validateUser( id: string ): Promise<User> {
+    async validateUser( id:string ): Promise<User> {
         const user = await this.usersService.findOneById( id );
         if ( !user.isActive ) throw new UnauthorizedException(`User is inactive, talk with an admin.`);
         delete user.password;
-        return user;
-    }
+        return user;  
+    } 
 
     revalidateToken( user: User): AuthResponse {
         return { 
             token: this.getJwtToken( user.id ), 
             user 
-        };
+        }; 
     }
 
 }
